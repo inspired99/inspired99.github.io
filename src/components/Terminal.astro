@@ -1,0 +1,65 @@
+---
+---
+<script>
+  let mc = document.getElementById('main_content'),
+    buffer,
+    x = 0,
+    u;
+
+  function typeWrite() {
+    const msg = buffer;
+    x = 0;
+    mc.innerHTML = "";
+    mc.style.whiteSpace = "pre";
+    u = setInterval(() => {
+      if (x >= msg.length) {
+        clearInterval(u);
+      }
+      mc.textContent += msg[x] ? msg[x] : "";
+      x++;
+    }, 25);
+  }
+
+  function drawMouse() {
+    let canvas = document.createElement('canvas');
+    canvas.width = 20;
+    canvas.height = 28;
+    let c = canvas.getContext('2d');
+    c.fillStyle = '#ffffff';
+    c.shadowColor = '#ffffff';
+    c.shadowBlur = 5;
+    c.fillRect(3, 3, 14, 23);
+    let url = canvas.toDataURL();
+    document.body.style.cursor = "url("+url+") 10 14, auto";
+  }
+
+  window.onload = () => {
+    buffer = document.getElementById('cv_content').textContent;
+    drawMouse();
+    typeWrite();
+  };
+</script>
+
+<div id="main_content"></div>
+
+<div id="cv_content" class="page">C:\> TYPE CV.TXT
+
+name:
+rin fhenzig
+contacts:
+rincel.com
+t.me/rinegade_dev
+
+experience
+
+2010-2011 - silkroad dev
+2011-2013 - ruroad dev
+2013-2015 - monero dev
+2015-2019 - hydra dev
+2019-2022 - ftx dev
+2022-2024 - aldrin labs ceo
+
+skills:
+terminally online cracked schizodev, ~20y of coding stuff</div>
+
+<div id="fgbg"></div>
